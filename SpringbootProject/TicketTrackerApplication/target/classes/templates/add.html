@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Add Ticket</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<style type="text/css">
+.form-div{
+	border: 2px solid rgb(55, 55, 255);
+	border-radius: 5px;
+	width: 50%;
+	margin-left: 350px;
+	margin-top:80px;
+	padding: 25px;
+}
+.nav-height{
+	height: 130px;
+}
+body{
+	font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+</style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-primary nav-height">
+  <div class="container-fluid">
+    <a class="navbar-brand fs-2 fw-bolder text-light" href="#">Ticket Tracker Application</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active fw-light text-light" aria-current="page" th:href="@{tickets}">Tickets</a>
+        </li>
+                <li class="nav-item">
+          <a class="nav-link active fw-light text-light" aria-current="page" th:href="@{add}">New Ticket</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<div class="form-div">
+	<h1>Create New Ticket</h1>
+<form th:action="@{addTicket}" th:object="${ticket}" method="post">
+<div class="mb-3">
+  <input type="hidden" class="form-control" th:field="*{id}" >
+</div>
+<div class="mb-3">
+  <label for="exampleFormControlInput1" class="form-label">Title</label>
+  <input type="text" class="form-control" id="exampleFormControlInput1" th:field="*{ticketTitle}" placeholder="Enter ticket title">
+</div>
+<div class="mb-3">
+  <label for="exampleFormControlTextarea1" class="form-label">Short Description</label>
+  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" th:field="*{ticketDescription}" placeholder="Enter ticket description"></textarea>
+</div>
+<div class="mb-3">
+  <label for="date" class="form-label">Date</label>
+  <input type="date" class="form-control" id="date" th:field="*{ticketCreation}" >
+</div>
+
+<input type="submit" class="btn btn-outline-primary">
+</form>
+</div>
+</body>
+</html>
